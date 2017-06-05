@@ -5,12 +5,12 @@ I=imread('lena.bmp','bmp');
 imshow(I);
 title('Ô´Í¼Ïñ');
 
-[count,msg,data]=hidedctadv0('Lena.bmp','1.jpg','1.txt',1982,1);
+[count,msg,data]=hidedctadv0('Lena.bmp','1.jpg','1.txt',1982,10);
 subplot(1,3,2); 
 imshow(data);
 title('Òþ²ØÖÐÍ¾µÄÍ¼Æ¬');
 
-[count,msg,data]=hidedctadv('Lena.bmp','1.jpg','1.txt',1982,1);
+[count,msg,data]=hidedctadv0('Lena.bmp','1.jpg','1.txt',1982,0.1);
 subplot(1,3,3); 
 imshow(data);
 title('Òþ²ØºóµÄÍ¼Æ¬');

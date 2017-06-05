@@ -14,7 +14,7 @@ function [count,msg,result]=hidedctadv0(image,imagegoal,msg,key,alpha)
 frr=fopen(msg,'r'); 
 [msg,count]=fread(frr,'ubit1'); 
 fclose(frr); 
-data0=imread('Lena.bmp');
+data0=imread(image);
 %将图象矩阵转为double型
 data0=double(data0)/255; 
 %取图象的一层做隐藏
@@ -29,7 +29,7 @@ DCTrgb0=DCTrgb;
 row=floor(row/8); 
 col=floor(col/8); 
 a=zeros([row col]); 
-[k1,k2]=randinterval(a,count,2001); 
+[k1,k2]=randinterval(a,count,key); 
 for i=1:count  
     k1(1,i)=(k1(1,i)-1)*8+1; 
     k2(1,i)=(k2(1,i)-1)*8+1; 
@@ -51,10 +51,10 @@ for i=1:count
         end 
     end 
     if DCTrgb(k1(i)+4,k2(i)+1)>DCTrgb(k1(i)+3,k2(i)+2) 
-        DCTrgb(k1(i)+3,k2(i)+2)=DCTrgb(k1(i)+3,k2(i)+2)-10;
+        DCTrgb(k1(i)+3,k2(i)+2)=DCTrgb(k1(i)+3,k2(i)+2)-alpha;
     %将原本小的系数调整得更小
     else 
-        DCTrgb(k1(i)+4,k2(i)+1)=DCTrgb(k1(i)+4,k2(i)+1)-10; 
+        DCTrgb(k1(i)+4,k2(i)+1)=DCTrgb(k1(i)+4,k2(i)+1)-alpha; 
     end 
 end 
 %信息写回保存
@@ -62,4 +62,4 @@ DCTrgb1=DCTrgb;
 data=blkproc(DCTrgb,[8 8],'P1*x*P2',T',T); 
 result=data0; 
 result(:,:,1)=data; 
-imwrite(result,'1.jpg');
+imwrite(result,imagegoal);
