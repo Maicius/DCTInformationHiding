@@ -1,4 +1,3 @@
-% ************* 基于DCT变换的图像水印算法实现－水印嵌入 **************
 clc
 clear all;
 close all;
@@ -27,7 +26,7 @@ number_blocks=L/(blocksize^2);      %计算分块数
 % 水印图像预处理
 [message_pad]=preTreated(); 
   
-% 嵌入水印 
+% 嵌入水印
 [waterMarked]=embed(Img,row,column,blocksize,message_pad); 
 
 Img_W=uint8(waterMarked);
@@ -35,3 +34,4 @@ subplot(1, 4, 4);
 imshow(Img_W);
 title('嵌入水印的图像');
 imwrite(Img_W,'final.jpg'); 
+

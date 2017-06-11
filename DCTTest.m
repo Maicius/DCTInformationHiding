@@ -13,14 +13,21 @@ BW=zeros(s,s);
 Block_dct1=zeros(block,block);
 %产生水印，并显示水印信息；
 subplot(3,2,1);
+<<<<<<< HEAD
 Info = imread('hello64.bmp');
 info=Info(:, :, 1);
 
+=======
+Info='abc';
+>>>>>>> master
 InfoStrSize=length(Info);
 %将字符串转换为位数组
 array=zeros(1,InfoStrSize*8);
 for m=1:InfoStrSize
+<<<<<<< HEAD
     %Infochar=uint8(fix(double(Info(m))./128));
+=======
+>>>>>>> master
     Infochar=double(Info(m));  %% 'c'为99
     for n=1:8
         array(8*(m-1)+n)=bitget(Infochar,n);%%获得Infochar第n位的值

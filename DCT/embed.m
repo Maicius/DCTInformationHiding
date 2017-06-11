@@ -37,3 +37,4 @@ function [Y_waterMarked]=embed(S_Y_P_source,row,column,blocksize,message_pad)
             
          end
      end
+

@@ -1,8 +1,5 @@
 
 function  [message_pad_recover]=extract(blocksize,column,row,S_Y_P_source)
-% 提取规则:对于各8×8块，DCT变换后以step为步长量化，以S为模取余数。
-% if s/2<=余数<s,then message bit is 1;
-% else 0<=余数<s/2,then message bit is 0;
 
 step=1;%量化步长
 s=15;%模值
@@ -24,3 +21,4 @@ for y=0:(row/blocksize-1)
      end
 end
   
+
