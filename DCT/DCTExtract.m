@@ -4,17 +4,16 @@ clear all;
 close all;
 
 %读入攻击后的图像
-Img=imread('final.bmp');  %路径根据图像具体保存位置修改
-
+Img=imread('final.jpg');  %路径根据图像具体保存位置修改
+subplot(1, 3, 1);
+imshow(Img);
+title('原图');
 [row, column]=size(Img);
 MP_source=reshape(Img,[],1);
 blocksize=8;                        %分块尺寸
 L=length(MP_source);                %图像数据总数
 number_blocks=L/(blocksize^2);      %计算分块数
 Img_Wdct=Img;
-
-% 水印图像预处理
-% [message_pad]=copyright(number_blocks); 
 
 % 水印提取
 [message_pad_recover]=extract(blocksize,column,row,Img_Wdct);
@@ -26,12 +25,13 @@ column_show=floor(length(message_pad_recover)/row_picture);  %嵌入的水印图像的列
 message_embed=message_pad_recover(1:column_show*row_picture);
 messaage_embed_reshape=reshape(message_embed,[row_picture,column_show]);
 message_show=mat2gray(messaage_embed_reshape);
+subplot(1, 3, 2);
 imshow(message_show);
-title('提取的版权图像');
-%复原
-n=14;    %384 for 512 * 512
+title('提取的水印');
+% %复原
+n=14;
 a=3;b=5;
-N=64
+N=64;
 img=message_show;
 for i=1:n
     i
@@ -43,7 +43,7 @@ for i=1:n
         end
     end
     img=message_show;
-    figure(2)
+    subplot(1, 3, 3);
     imshow(img,[]);
     title('恢复图像')
 end

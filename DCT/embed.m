@@ -7,7 +7,8 @@ function [Y_waterMarked]=embed(S_Y_P_source,row,column,blocksize,message_pad)
  
      step=1;%量化步长
      s=15;%模值
-
+    alpha1 = s/4;
+    alpha2 = 3*s/4;
       for y=0:(row/blocksize-1)
           for x=0:(column/blocksize-1)
               
@@ -21,14 +22,14 @@ function [Y_waterMarked]=embed(S_Y_P_source,row,column,blocksize,message_pad)
              
              % if message bit is 0　elseif message bit is 1
              if (message_pad(y*column/blocksize+x+1) == 0)
-                dct_block_WM(1,2)=relaxed_messured_dct_block(1,2)+s/4;
-                 dct_block_WM(3,1)=relaxed_messured_dct_block(3,1)+s/4;
-                 dct_block_WM(4,4)=relaxed_messured_dct_block(4,4)+s/4;
+                dct_block_WM(1,2)=relaxed_messured_dct_block(1,2)+alpha1;
+                 dct_block_WM(3,1)=relaxed_messured_dct_block(3,1)+alpha1;
+                 dct_block_WM(4,4)=relaxed_messured_dct_block(4,4)+alpha1;
             elseif (message_pad(y*column/blocksize+x+1) == 1) 
                 
-                 dct_block_WM(1,2)=relaxed_messured_dct_block(1,2)+3*s/4;
-                 dct_block_WM(3,1)=relaxed_messured_dct_block(3,1)+3*s/4;
-                 dct_block_WM(4,4)=relaxed_messured_dct_block(4,4)+3*s/4;
+                 dct_block_WM(1,2)=relaxed_messured_dct_block(1,2)+alpha2;
+                 dct_block_WM(3,1)=relaxed_messured_dct_block(3,1)+alpha2;
+                 dct_block_WM(4,4)=relaxed_messured_dct_block(4,4)+alpha2;
              end
                 
              % transform block back into spatial domain

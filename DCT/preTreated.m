@@ -1,7 +1,7 @@
 
-function [message_pad,messageEmbed]=copyright(number_blocks)
+function [message_pad]=preTreated()
 % generate watermark
-img=imread('hello64.bmp');
+img=imread('helloWorld.jpg');
 img=img(:, :, 1);
 subplot(1,4,2);
 imshow(img,[]);
@@ -31,17 +31,8 @@ for i=1:n
 %      % pause(0.001);
 %      title('置换图像');
 end
-message_embed = double(imgn)/255;
+message_pad = double(imgn)/255;
 subplot(1, 4, 3);
-imshow(message_embed);
+imshow(message_pad);
 title('置乱图像');
 imwrite(imgn, 'niceJob2.bmp');
-% message_embed=uint8(fix(double(message)./128));     %将商标图变为0、1二值
-
-columnRow=size(message_embed);%商标的垂直水平像素数
-row=columnRow(1,1);
-column=columnRow(1,2);
-
-messageEmbed=reshape(message_embed,[1,row*column]);%将商标比特按照块数多少排列进行嵌入
-messageembed=[messageEmbed,messageEmbed];
-message_pad=messageembed(1:number_blocks);
