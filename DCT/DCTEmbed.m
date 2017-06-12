@@ -17,14 +17,14 @@ imshow(Img);
 title('原始图像');
 
 [row, column]=size(Img);             
-MP_source=reshape(Img',[],1);
+MP_source=reshape(Img,[],1);
 Orignal_source=MP_source;           %原始图像数据备份
 blocksize=8;                        %分块尺寸
 L=length(MP_source);                %图像数据总数
 number_blocks=L/(blocksize^2);      %计算分块数
 
 % 水印图像预处理
-[message_pad]=copyright(number_blocks); 
+[message_pad]=preTreated(); 
   
 % 嵌入水印
 [waterMarked]=embed(Img,row,column,blocksize,message_pad); 
