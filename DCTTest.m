@@ -24,10 +24,6 @@ InfoStrSize=length(Info);
 %将字符串转换为位数组
 array=zeros(1,InfoStrSize*8);
 for m=1:InfoStrSize
-<<<<<<< HEAD
-    %Infochar=uint8(fix(double(Info(m))./128));
-=======
->>>>>>> master
     Infochar=double(Info(m));  %% 'c'为99
     for n=1:8
         array(8*(m-1)+n)=bitget(Infochar,n);%%获得Infochar第n位的值
