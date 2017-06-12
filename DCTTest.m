@@ -13,13 +13,7 @@ BW=zeros(s,s);
 Block_dct1=zeros(block,block);
 %产生水印，并显示水印信息；
 subplot(3,2,1);
-<<<<<<< HEAD
-Info = imread('hello64.bmp');
-info=Info(:, :, 1);
-
-=======
 Info='abc';
->>>>>>> master
 InfoStrSize=length(Info);
 %将字符串转换为位数组
 array=zeros(1,InfoStrSize*8);
