@@ -34,7 +34,6 @@ n=14;
 a=3;b=5;
 N=64;
 img=message_show;
-
 for i=1:n
     i
     for y=1:64

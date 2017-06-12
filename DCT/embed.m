@@ -35,5 +35,6 @@ function [Y_waterMarked]=embed(S_Y_P_source,row,column,blocksize,message_pad)
              % transform block back into spatial domain
             Y_waterMarked( y*blocksize+1:(y+1)*blocksize,x*blocksize+1:(x+1)*blocksize)=idct2(dct_block_WM); 
             
-         end
+          end
       end
+
